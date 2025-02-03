@@ -5,8 +5,8 @@ import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    {/* <ChakraProvider> */}
+    <App />
+    {/* </ChakraProvider> */}
   </StrictMode>
 );
