@@ -1,11 +1,16 @@
 import express, { Request, Response } from "express";
 import { LanguageServiceClient } from "@google-cloud/language";
+import cors from 'cors';
 
 const app = express();
 const port = 8008;
 
 // JSON body 파싱을 위해 express.json() 사용
 app.use(express.json());
+
+app.use(cors({
+  origin:true
+}))
 
 // Google Cloud Language 클라이언트 생성 (인증 정보는 환경 변수나 서비스 계정 JSON 파일을 사용)
 const client = new LanguageServiceClient({});
