@@ -2,6 +2,7 @@ import { Textarea, Flex, Button } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import { useForm } from "react-hook-form";
 import { INPUT_CONDITION_DATA, INPUT_TEXT_DATA } from "@/static/chatPageData";
+import useAnalyzeSyntax from "@/apis/post/useAnalyzeSyntax";
 
 interface FormValues {
   inputSentences: string;
@@ -13,8 +14,11 @@ const ChatPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+  const analyzeSyntax = useAnalyzeSyntax();
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => {
+    analyzeSyntax.mutate(data.inputSentences);
+  });
 
   return (
     <>
