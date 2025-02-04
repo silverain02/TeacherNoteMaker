@@ -1,7 +1,7 @@
 export const INPUT_CONDITION_DATA = {
   MAX_LENGTH: 1000,
   MIN_LENGTH: 3,
-  REGEX: /^[A-Za-z0-9\s.,'’“”";:!?_-]+$/, // 영어, 숫자, 특수문자 포함
+  REGEX: /^[A-Za-z0-9\s.,'’“”";:!?_\p{Pd}]+$/u, // 영어, 숫자, 특수문자 포함
 };
 
 export const INPUT_TEXT_DATA = {
