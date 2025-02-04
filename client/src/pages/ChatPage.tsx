@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { INPUT_CONDITION_DATA, INPUT_TEXT_DATA } from "@/static/chatPageData";
 
 interface FormValues {
-  inputText: string;
+  inputSentences: string;
 }
 
 const ChatPage = () => {
@@ -24,14 +24,14 @@ const ChatPage = () => {
             <Field
               width="80%"
               label={INPUT_TEXT_DATA.LABEL}
-              invalid={!!errors.inputText}
-              errorText={errors.inputText?.message}
+              invalid={!!errors.inputSentences}
+              errorText={errors.inputSentences?.message}
             >
               <Textarea
                 variant="outline"
                 resize="vertical"
                 placeholder={INPUT_TEXT_DATA.PLACEHOLDER}
-                {...register("inputText", {
+                {...register("inputSentences", {
                   required: INPUT_TEXT_DATA.ERROR_TEXT.EMPTY,
                   maxLength: {
                     value: INPUT_CONDITION_DATA.MAX_LENGTH,
