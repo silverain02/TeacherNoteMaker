@@ -1,4 +1,11 @@
-import { Textarea, Flex, Button } from "@chakra-ui/react";
+import {
+  Textarea,
+  Flex,
+  Button,
+  HStack,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import { useForm } from "react-hook-form";
 import { INPUT_CONDITION_DATA, INPUT_TEXT_DATA } from "@/static/chatPageData";
@@ -52,11 +59,35 @@ const ChatPage = () => {
                 })}
               />
             </Field>
-            <Button type="submit" alignSelf="flex-start" marginTop="1.7rem">
+            <Button
+              type="submit"
+              alignSelf="flex-start"
+              marginTop="1.7rem"
+              disabled={analyzeSyntax.isPending}
+            >
               Submit
             </Button>
           </Flex>
         </form>
+
+        <Flex
+          direction="column"
+          marginTop="2rem"
+          width="80vw"
+          justify="center"
+          align="center"
+        >
+          {analyzeSyntax.isPending ? (
+            <HStack>
+              <Spinner />
+              <Text>Loading...</Text>
+            </HStack>
+          ) : analyzeSyntax.isError ? (
+            <div>Error...{analyzeSyntax.error.message}</div>
+          ) : analyzeSyntax.isSuccess ? (
+            <div>{JSON.stringify(analyzeSyntax.data)}</div>
+          ) : null}
+        </Flex>
       </Flex>
     </>
   );
