@@ -30,15 +30,10 @@ async function analyzeTextSyntax(text: string) {
 
   try {
     // 구문 분석 요청: analyzeSyntax 메서드 호출
-    const [syntax] = await client.analyzeSyntax({ document, encodingType });
+    const [result] = await client.analyzeSyntax({ document, encodingType });
 
-    // 토큰 목록을 간단한 객체 배열로 가공
-    const tokens = syntax.tokens?.map(token => ({
-      text: token.text?.content,
-      partOfSpeech: token.partOfSpeech?.tag
-    }));
 
-    return tokens;
+    return result;
   } catch (error) {
     console.error('Error analyzing syntax:', error);
     throw error;
